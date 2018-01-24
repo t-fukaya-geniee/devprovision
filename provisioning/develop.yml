@@ -1,0 +1,35 @@
+---
+- hosts: develop
+  tasks:
+    - name: install zsh
+      apt: name=zsh update_cache=yes cache_valid_time=3600
+      become: true
+
+    - name: change default shell
+      user: name=vagrant shell=/usr/bin/zsh
+      become: true
+
+    - name: install git
+      apt: name=git
+      become: true
+
+      
+    # - git: repo=https://github.com/t-fukaya-geniee/dotfiles.git
+    #        dest=~/dotfiles version=master accept_hostkey=yes
+
+    # - git: repo=https://github.com/zplug/zplug.git
+    #        dest=~/.zplug version=master accept_hostkey=yes
+
+    - name: install ruby
+      apt: name=ruby
+      become: true
+
+    - name: install vim
+      apt: name=vim
+      become: true
+
+    - name: install make
+      apt: name=make
+      become: true
+
+      #- include_tasks: docker.yml
